@@ -1,17 +1,11 @@
-import * as React from "react";
 import * as format from "../utils/format";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ShareIcon from "@mui/icons-material/Share";
-import { CardActionArea, Chip, Divider, Grid, Link } from "@mui/material";
-import {
-  ChatBubble,
-  ChatBubbleOutline,
-  ThumbsUpDown,
-  ThumbUpOffAlt,
-} from "@mui/icons-material";
+import { CardActionArea, Chip, Divider, Grid } from "@mui/material";
+import { ChatBubbleOutline, ThumbUpOffAlt } from "@mui/icons-material";
 
 export default function ArticleCard({
   title,
@@ -57,7 +51,7 @@ export default function ArticleCard({
             size="small"
             label={topic}
             component="a"
-            href="#basic-chip"
+            href={`./topic/${topic}`}
             variant="outlined"
             clickable
           />

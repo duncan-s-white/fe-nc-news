@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import FeedIcon from "@mui/icons-material/Feed";
+import { Link } from "react-router-dom";
 
 const pages = ["Articles", "Topics", "Users"];
 const settings = ["Profile", "Settings", "Logout"];
@@ -46,7 +47,7 @@ const ResponsiveAppBar = () => {
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
             <FeedIcon fontSize="large" />
-            NC News
+            <Link to="/">NC News</Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
