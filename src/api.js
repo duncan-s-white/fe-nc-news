@@ -5,7 +5,7 @@ const ncNewsApi = axios.create({
 });
 
 export const fetchArticles = () => {
-  return ncNewsApi.get("/articles?limit=0&sort_by=article_id&order=asc");
+  return ncNewsApi.get("/articles?limit=0&sort_by=created_at&order=desc");
 };
 
 export const fetchTopics = () => {

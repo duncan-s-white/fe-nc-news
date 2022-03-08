@@ -23,7 +23,7 @@ const ArticleList = () => {
   if (isLoading) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <CircularProgress color="secondary" disableShrink />
+        <CircularProgress color="neutral" disableShrink />
       </Box>
     );
   }

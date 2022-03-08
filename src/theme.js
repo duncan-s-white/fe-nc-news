@@ -2,9 +2,6 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { fontWeight } from "@mui/system";
 
 let theme = createTheme({
-  typography: {
-    color: "#212121",
-  },
   palette: {
     primary: {
       main: "#fb8c00",
@@ -12,6 +9,12 @@ let theme = createTheme({
     },
     secondary: {
       main: "#3e3b68",
+      light: "#ebf0ff",
+      contrastText: "#283044",
+    },
+    neutral: {
+      main: "#212121",
+      light: "#757575",
     },
   },
   breakpoints: {
@@ -27,6 +30,7 @@ let theme = createTheme({
 
 theme = createTheme(theme, {
   typography: {
+    color: theme.palette.neutral.main,
     fontSize: 14,
     h1: {
       svg: { marginRight: 10 },
@@ -46,9 +50,20 @@ theme = createTheme(theme, {
       color: theme.palette.primary.main,
     },
     h4: {
-      fontSize: 16,
-      padding: 8,
-      height: 48,
+      fontSize: 15,
+      fontWeight: 400,
+      padding: 10,
+      height: 56,
+      color: theme.palette.secondary.contrastText,
+      backgroundColor: theme.palette.secondary.light,
+    },
+    address: {
+      color: theme.palette.neutral.light,
+      a: {
+        color: theme.palette.neutral.light,
+        fontWeight: "bold",
+        textDecoration: "none",
+      },
     },
   },
 });
