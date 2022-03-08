@@ -33,6 +33,10 @@ theme = createTheme(theme, {
     color: theme.palette.neutral.main,
     fontSize: 14,
     h1: {
+      a: {
+        color: "#fff",
+        textDecoration: "none",
+      },
       svg: { marginRight: 10 },
       fontSize: 26,
       lineHeight: 1.5,
