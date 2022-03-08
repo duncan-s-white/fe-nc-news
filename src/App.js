@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "@fontsource/roboto";
+import { CssBaseline } from "@mui/material";
+import theme from "./theme";
+import { Box } from "@mui/material";
+import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import { ThemeProvider } from "@emotion/react";
+import HomePage from "./components/HomePage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ResponsiveAppBar />
+      <Box
+        component="main"
+        sx={{
+          p: 2,
+          maxWidth: [480, 720, 1080, 1440],
+          margin: "0 auto",
+        }}
+      >
+        <HomePage />
+      </Box>
+    </ThemeProvider>
   );
 }
 
