@@ -14,7 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import FeedIcon from "@mui/icons-material/Feed";
 import { Link } from "react-router-dom";
 
-const pages = ["Articles", "Topics", "Users"];
+const pages = [
+  { title: "Articles", link: "/" },
+  { title: "Topics", link: "/topics" },
+  { title: "Users", link: "/users" },
+];
 const settings = ["Profile", "Settings", "Logout"];
 
 const ResponsiveAppBar = () => {
@@ -80,8 +84,13 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page.title}
+                  onClick={handleCloseNavMenu}
+                  component={Link}
+                  to={page.link}
+                >
+                  <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -93,16 +102,18 @@ const ResponsiveAppBar = () => {
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
             <FeedIcon fontSize="large" />
-            NC News
+            <Link to="/">NC News</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.title}
                 onClick={handleCloseNavMenu}
+                component={Link}
+                to={page.link}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
           </Box>

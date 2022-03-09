@@ -3,9 +3,9 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import ShareIcon from "@mui/icons-material/Share";
 import { CardActionArea, Chip, Divider, Grid } from "@mui/material";
-import { ChatBubbleOutline, ThumbUpOffAlt } from "@mui/icons-material";
+import { ChatBubbleOutline, ThumbUpOffAlt, Share } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 export default function ArticleCard({
   title,
@@ -14,12 +14,11 @@ export default function ArticleCard({
   topic,
   comment_count,
   votes,
+  article_id,
 }) {
-  const articleDate = new Date(created_at).toDateString();
-
   return (
     <Card>
-      <CardActionArea>
+      <CardActionArea component={Link} to={`/article/${article_id}`}>
         <Typography variant="h4">{format.cardTitle(title)}</Typography>
         <Divider />
       </CardActionArea>
@@ -35,8 +34,11 @@ export default function ArticleCard({
             {author}
           </a>
         </Typography>{" "}
-        <time dateTime="{created_at}" title="August 28th, 2011">
-          {articleDate}
+        <time
+          dateTime={format.cardDate(created_at)}
+          title={format.cardDate(created_at)}
+        >
+          {format.cardDate(created_at)}
         </time>
         <br />
       </Typography>
@@ -65,7 +67,7 @@ export default function ArticleCard({
             </IconButton>
             <Typography variant="caption">{votes}</Typography>
             <IconButton aria-label="share">
-              <ShareIcon fontSize="small" />
+              <Share fontSize="small" />
             </IconButton>
           </Grid>
         </Grid>

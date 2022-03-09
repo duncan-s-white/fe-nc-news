@@ -8,6 +8,8 @@ import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import { ThemeProvider } from "@emotion/react";
 import HomePage from "./components/HomePage";
 import TopicPage from "./components/TopicPage";
+import ArticlePage from "./components/ArticlePage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -25,8 +27,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/topic/:slug" element={<TopicPage />} />
+          <Route path="/article/:articleId" element={<ArticlePage />} />
         </Routes>
       </Box>
+      <Footer />
     </ThemeProvider>
   );
 }
