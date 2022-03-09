@@ -1,12 +1,22 @@
-import { Card, Chip } from "@mui/material";
+import { Box, Card, Chip } from "@mui/material";
 
 const TopicsButtons = ({ topics, topic: selectedTopic }) => {
+  console.log(selectedTopic);
   return (
-    <Card variant="outlined" sx={{ mb: 1, p: 1 }}>
+    <Box variant="div" sx={{ mb: 1 }}>
+      <Chip
+        sx={{ mr: 1 }}
+        key="all"
+        label="all"
+        component="a"
+        href={`/`}
+        variant={typeof selectedTopic === "undefined" ? "filled" : "outlined"}
+        clickable
+      />
       {topics.map((topic) => {
         return (
           <Chip
-            sx={{ mx: 1 }}
+            sx={{ mr: 1 }}
             key={topic.slug}
             label={topic.slug}
             component="a"
@@ -16,7 +26,7 @@ const TopicsButtons = ({ topics, topic: selectedTopic }) => {
           />
         );
       })}
-    </Card>
+    </Box>
   );
 };
 

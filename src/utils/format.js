@@ -6,3 +6,7 @@ export const cardTitle = (title, maxLength = 60) => {
 export const slugTitle = (str) => {
   return str[0].toUpperCase() + str.slice(1);
 };
+
+export const cardDate = (rawDate) => {
+  return new Date(rawDate).toDateString();
+};

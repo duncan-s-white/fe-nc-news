@@ -4,6 +4,10 @@ const ncNewsApi = axios.create({
   baseURL: " https://dw-nc-news.herokuapp.com/api",
 });
 
+export const fetchArticle = (articleId) => {
+  return ncNewsApi.get(`/articles/${articleId}`);
+};
+
 export const fetchArticles = (topic) => {
   const fetchArticleParams = {
     params: {

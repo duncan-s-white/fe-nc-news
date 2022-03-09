@@ -49,8 +49,8 @@ theme = createTheme(theme, {
     },
     h2: {
       fontSize: 28,
-      margin: "12px 0 24px",
-      padding: "4px 12px",
+      margin: "6px 0 18px",
+      padding: "4px",
       color: theme.palette.primary.main,
     },
     h4: {
