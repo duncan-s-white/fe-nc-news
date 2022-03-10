@@ -1,4 +1,5 @@
 import { Paper, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import * as format from "../utils/format";
 
 const CommentCard = ({ body, author, created_at }) => {
@@ -15,9 +16,9 @@ const CommentCard = ({ body, author, created_at }) => {
         >
           <Typography variant="address" component="address">
             By{" "}
-            <a rel="author" href={`/users/${author}`}>
+            <Link rel="author" to={`/user/${author}`}>
               {author}
-            </a>
+            </Link>
           </Typography>{" "}
           <time
             dateTime={format.cardDate(created_at)}

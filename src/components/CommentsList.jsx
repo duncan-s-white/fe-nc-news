@@ -5,7 +5,7 @@ import CommentCard from "./CommentCard";
 import Loading from "./Loading";
 import AddComment from "./AddComment";
 
-const CommentsList = ({ articleId }) => {
+const CommentsList = ({ articleId, setCommentCount }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,25 +30,24 @@ const CommentsList = ({ articleId }) => {
     >
       <Grid container spacing={2} justifyContent="center">
         <Grid item xs={12} md={10}>
-          <Typography variant="h3" component="h3">
-            {" "}
-            Comments:{" "}
+          <AddComment
+            articleId={articleId}
+            setComments={setComments}
+            setCommentCount={setCommentCount}
+          />
+        </Grid>
+        <Grid item xs={12} md={10}>
+          <Typography variant="h3" component="h3" sx={{ mb: 0 }}>
+            User Comments:
           </Typography>
         </Grid>
-        {comments.map((comment) => {
+        {comments.map((comment, index) => {
           return (
-            <Grid item xs={12} md={10} key={comment.comment_id}>
+            <Grid item xs={12} md={10} key={index}>
               <CommentCard {...comment} />
             </Grid>
           );
         })}
-        <Grid item xs={12} md={10}>
-          <Typography variant="h3" component="h3">
-            {" "}
-            Add a comment:{" "}
-          </Typography>
-          <AddComment articleId={articleId} />
-        </Grid>
       </Grid>
     </Box>
   );

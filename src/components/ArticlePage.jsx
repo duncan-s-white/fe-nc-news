@@ -11,6 +11,7 @@ import Loading from "./Loading";
 const ArticlePage = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState([]);
+  const [commentCount, setCommentCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const ArticlePage = () => {
       .fetchArticle(articleId)
       .then(({ data }) => {
         setArticle(data.article);
+        setCommentCount(data.article.comment_count);
         setIsLoading(false);
       })
       .catch(console.log);
@@ -75,8 +77,8 @@ const ArticlePage = () => {
         </Grid>
         <Grid item container direction="column" xs={3} alignItems="flex-end">
           <Grid item>
-            <Typography variant="caption">{article.comment_count}</Typography>
-            <IconButton aria-label="view comments" disabled color="default">
+            <Typography variant="caption">{commentCount}</Typography>
+            <IconButton aria-label="view comments" color="default">
               <ChatBubbleOutline />
             </IconButton>
           </Grid>
@@ -98,7 +100,10 @@ const ArticlePage = () => {
 
       <UserVote votes={article.votes} id={article.article_id} />
 
-      <CommentsList articleId={article.article_id} />
+      <CommentsList
+        articleId={article.article_id}
+        setCommentCount={setCommentCount}
+      />
     </Box>
   );
 };

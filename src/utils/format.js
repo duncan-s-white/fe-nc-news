@@ -8,5 +8,6 @@ export const slugTitle = (str) => {
 };
 
 export const cardDate = (rawDate) => {
+  if (rawDate === "Just now") return rawDate;
   return new Date(rawDate).toDateString();
 };

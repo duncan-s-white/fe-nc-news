@@ -36,10 +36,10 @@ const UserVote = ({ votes, id }) => {
         <IconButton aria-label="vote up" onClick={incrementVotes}>
           <ThumbUpOffAlt />
         </IconButton>
+        <Typography variant="caption">{votes + voted}</Typography>
         <IconButton aria-label="vote down" onClick={decrementVotes}>
           <ThumbDownOffAlt />
         </IconButton>
-        <Typography variant="caption">{votes + voted}</Typography>
       </Typography>
       {errorMessage ? (
         <FormHelperText error={true}>{errorMessage}</FormHelperText>
