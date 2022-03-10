@@ -11,3 +11,8 @@
 img.user-profile {
   max-width: 250px;
 }
+
+footer a,
+footer a:visited {
+  color: #212121;
+}

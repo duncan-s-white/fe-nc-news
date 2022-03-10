@@ -10,9 +10,23 @@ const Footer = () => {
         align="center"
         color="neutral.light"
       >
-        Made with React and Material UI
+        Made with{" "}
+        <a
+          href="https://reactjs.org/"
+          sx={{ color: "neutral.light" }}
+          target="blank"
+        >
+          React
+        </a>{" "}
+        and{" "}
+        <a href="https://mui.com/" target="blank">
+          Material UI
+        </a>
         <br />
-        Created by Duncan White
+        Created by{" "}
+        <a href="https://github.com/duncan-s-white" target="blank">
+          Duncan White
+        </a>
       </Typography>
     </Box>
   );
