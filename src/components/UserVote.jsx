@@ -3,7 +3,7 @@ import { IconButton, Typography, FormHelperText } from "@mui/material";
 import { ThumbUpOffAlt, ThumbDownOffAlt } from "@mui/icons-material";
 import { useState } from "react";
 
-const UserVote = ({ votes, setVotes, id }) => {
+const UserVote = ({ votes, id }) => {
   const [voted, setVoted] = useState(0);
   const [errorMessage, setErrorMessage] = useState(false);
   const msg = "You vote could not be placed";
@@ -17,10 +17,8 @@ const UserVote = ({ votes, setVotes, id }) => {
       })
       .catch((err) => {
         setErrorMessage(msg);
-        setVotes((currVotes) => currVotes - value);
         setVoted((voted) => voted - value);
       });
-    setVotes((currVotes) => currVotes + value);
     setVoted((voted) => voted + value);
   };
 
@@ -41,7 +39,7 @@ const UserVote = ({ votes, setVotes, id }) => {
         <IconButton aria-label="vote down" onClick={decrementVotes}>
           <ThumbDownOffAlt />
         </IconButton>
-        <Typography variant="caption">{votes}</Typography>
+        <Typography variant="caption">{votes + voted}</Typography>
       </Typography>
       {errorMessage ? (
         <FormHelperText error={true}>{errorMessage}</FormHelperText>

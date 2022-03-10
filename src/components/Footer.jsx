@@ -2,7 +2,7 @@ import { Box, Divider, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <Box variant="footer" component="footer">
+    <Box variant="footer" component="footer" sx={{ mb: 2 }}>
       <Divider variant="middle" sx={{ mb: 2 }} />
       <Typography
         variant="caption"

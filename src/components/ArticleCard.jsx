@@ -28,7 +28,7 @@ export default function ArticleCard({
         className="card-summary"
         color="initial"
       >
-        <Typography variant="address" component="address" className="author">
+        <Typography variant="address" component="address">
           By{" "}
           <a rel="author" href={`/users/${author}`}>
             {author}

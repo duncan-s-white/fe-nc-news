@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import * as api from "../api";
-import CircularProgress from "@mui/material/CircularProgress";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import ArticleCard from "./ArticleCard";
 import TopicsButtons from "./TopicsButtons";
+import Loading from "./Loading";
 
 const ArticleList = ({ topic }) => {
   const [articles, setArticles] = useState([]);
@@ -21,13 +21,7 @@ const ArticleList = ({ topic }) => {
     );
   }, []);
 
-  if (isLoading) {
-    return (
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <CircularProgress color="neutral" disableShrink />
-      </Box>
-    );
-  }
+  if (isLoading) return <Loading />;
 
   return (
     <>

@@ -52,6 +52,11 @@ theme = createTheme(theme, {
       padding: "4px",
       color: theme.palette.primary.main,
     },
+    h3: {
+      fontSize: 22,
+      margin: "6px 0 18px",
+      padding: "4px 0",
+    },
     h4: {
       fontSize: 15,
       fontWeight: 400,
