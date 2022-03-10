@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Box, Grid, Chip, IconButton, Typography } from "@mui/material";
 import { ChatBubbleOutline, Share } from "@mui/icons-material";
@@ -15,10 +15,13 @@ const ArticlePage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticle(articleId).then(({ data }) => {
-      setArticle(data.article);
-      setIsLoading(false);
-    });
+    api
+      .fetchArticle(articleId)
+      .then(({ data }) => {
+        setArticle(data.article);
+        setIsLoading(false);
+      })
+      .catch(console.log);
   }, []);
 
   if (isLoading) return <Loading />;
@@ -47,9 +50,9 @@ const ArticlePage = () => {
         <Grid item xs={9}>
           <Typography variant="address" component="address" className="author">
             By{" "}
-            <a rel="author" href={`/users/${article.author}`}>
+            <Link rel="author" to={`/user/${article.author}`}>
               {article.author}
-            </a>
+            </Link>
           </Typography>
           <Typography
             variant="time"
@@ -64,8 +67,8 @@ const ArticlePage = () => {
             sx={{ my: 0.5 }}
             size="small"
             label={article.topic}
-            component="a"
-            href={`/topic/${article.topic}`}
+            component={Link}
+            to={`/topic/${article.topic}`}
             variant="outlined"
             clickable
           />

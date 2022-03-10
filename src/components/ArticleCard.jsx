@@ -30,9 +30,9 @@ export default function ArticleCard({
       >
         <Typography variant="address" component="address">
           By{" "}
-          <a rel="author" href={`/users/${author}`}>
+          <Link rel="author" to={`/user/${author}`}>
             {author}
-          </a>
+          </Link>
         </Typography>{" "}
         <time
           dateTime={format.cardDate(created_at)}
@@ -52,8 +52,8 @@ export default function ArticleCard({
           <Chip
             size="small"
             label={topic}
-            component="a"
-            href={`./topic/${topic}`}
+            component={Link}
+            to={`/topic/${topic}`}
             variant="outlined"
             clickable
           />

@@ -19,7 +19,7 @@ const ArticleList = ({ topic }) => {
         setIsLoading(false);
       }
     );
-  }, []);
+  }, [topic]);
 
   if (isLoading) return <Loading />;
 

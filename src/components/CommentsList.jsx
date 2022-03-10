@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Typography, Box, Grid } from "@mui/material";
 import CommentCard from "./CommentCard";
 import Loading from "./Loading";
+import AddComment from "./AddComment";
 
 const CommentsList = ({ articleId }) => {
   const [comments, setComments] = useState([]);
@@ -41,6 +42,13 @@ const CommentsList = ({ articleId }) => {
             </Grid>
           );
         })}
+        <Grid item xs={12} md={10}>
+          <Typography variant="h3" component="h3">
+            {" "}
+            Add a comment:{" "}
+          </Typography>
+          <AddComment articleId={articleId} />
+        </Grid>
       </Grid>
     </Box>
   );
