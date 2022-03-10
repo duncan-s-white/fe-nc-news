@@ -28,6 +28,14 @@ export const fetchTopics = () => {
   return ncNewsApi.get("/topics");
 };
 
+export const fetchUsers = () => {
+  return ncNewsApi.get("/users");
+};
+
+export const fetchUser = (username) => {
+  return ncNewsApi.get(`/users/${username}`);
+};
+
 export const patchArticle = (articleId, updatedArticle) => {
   return ncNewsApi.patch(`/articles/${articleId}`, updatedArticle);
 };

@@ -10,6 +10,8 @@ import HomePage from "./components/HomePage";
 import TopicPage from "./components/TopicPage";
 import ArticlePage from "./components/ArticlePage";
 import Footer from "./components/Footer";
+import UsersList from "./components/UsersList";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/users" element={<UsersList />} />
+          <Route path="/user/:username" element={<UserProfile />} />
           <Route path="/topic/:slug" element={<TopicPage />} />
           <Route path="/article/:articleId" element={<ArticlePage />} />
         </Routes>
