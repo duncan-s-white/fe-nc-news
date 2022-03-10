@@ -2,7 +2,7 @@ import { CircularProgress, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Box, Grid, Chip, IconButton } from "@mui/material";
-import { ChatBubbleOutline, ThumbUpOffAlt, Share } from "@mui/icons-material";
+import { ChatBubbleOutline, Share } from "@mui/icons-material";
 import * as api from "../api";
 import * as format from "../utils/format";
 import UserVote from "./UserVote";
@@ -10,12 +10,14 @@ import UserVote from "./UserVote";
 const ArticlePage = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState([]);
+  const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     api.fetchArticle(articleId).then(({ data }) => {
       setArticle(data.article);
+      setVotes(data.article.votes);
       setIsLoading(false);
     });
   }, []);
@@ -77,7 +79,7 @@ const ArticlePage = () => {
         <Grid item container direction="column" xs={3} alignItems="flex-end">
           <Grid item>
             <Typography variant="caption">{article.comment_count}</Typography>
-            <IconButton aria-label="view comments">
+            <IconButton aria-label="view comments" disabled color="default">
               <ChatBubbleOutline />
             </IconButton>
           </Grid>
@@ -97,7 +99,7 @@ const ArticlePage = () => {
         {article.body}
       </Typography>
 
-      <UserVote votes={article.votes} />
+      <UserVote votes={votes} setVotes={setVotes} id={article.article_id} />
     </Box>
   );
 };

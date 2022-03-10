@@ -23,3 +23,7 @@ export const fetchArticles = (topic) => {
 export const fetchTopics = () => {
   return ncNewsApi.get("/topics");
 };
+
+export const patchArticle = (articleId, updatedArticle) => {
+  return ncNewsApi.patch(`/articles/${articleId}`, updatedArticle);
+};
