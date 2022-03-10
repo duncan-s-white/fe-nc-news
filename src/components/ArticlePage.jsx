@@ -1,34 +1,28 @@
-import { CircularProgress, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Box, Grid, Chip, IconButton } from "@mui/material";
+import { Box, Grid, Chip, IconButton, Typography } from "@mui/material";
 import { ChatBubbleOutline, Share } from "@mui/icons-material";
 import * as api from "../api";
 import * as format from "../utils/format";
 import UserVote from "./UserVote";
+import CommentsList from "./CommentsList";
+import Loading from "./Loading";
 
 const ArticlePage = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState([]);
-  const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     api.fetchArticle(articleId).then(({ data }) => {
       setArticle(data.article);
-      setVotes(data.article.votes);
       setIsLoading(false);
     });
   }, []);
 
-  if (isLoading) {
-    return (
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <CircularProgress color="neutral" disableShrink />
-      </Box>
-    );
-  }
+  if (isLoading) return <Loading />;
+
   const createdAt = format.cardDate(article.created_at);
   return (
     <Box
@@ -99,7 +93,9 @@ const ArticlePage = () => {
         {article.body}
       </Typography>
 
-      <UserVote votes={votes} setVotes={setVotes} id={article.article_id} />
+      <UserVote votes={article.votes} id={article.article_id} />
+
+      <CommentsList articleId={article.article_id} />
     </Box>
   );
 };
