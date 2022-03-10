@@ -38,7 +38,6 @@ const UserInfo = () => {
   const userPages = [
     { title: "Profile", link: `/user/${loggedInUser.username}` },
     { title: "Settings", link: `/user/${loggedInUser.username}/settings` },
-    { title: "Logout", link: "/" },
   ];
 
   return (
