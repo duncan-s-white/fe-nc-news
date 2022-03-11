@@ -1,6 +1,6 @@
 # NC News Front End
 
-[Try it out](https://gifted-hawking-2afb29.netlify.app/)
+[Try it out](https://dw-nc-news.netlify.app/)
 
 ## What is it?
 
