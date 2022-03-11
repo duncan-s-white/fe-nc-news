@@ -56,6 +56,8 @@ const CommentsList = ({ articleId, setCommentCount }) => {
             articleId={articleId}
             setComments={setComments}
             setCommentCount={setCommentCount}
+            commentDeleted={commentDeleted}
+            setCommentDeleted={setCommentDeleted}
           />
         </Grid>
         <Grid item xs={12} md={10}>
