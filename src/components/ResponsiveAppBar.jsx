@@ -8,7 +8,6 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import FeedIcon from "@mui/icons-material/Feed";
 import { Link } from "react-router-dom";
@@ -16,7 +15,6 @@ import UserInfo from "./UserInfo";
 
 const pages = [
   { title: "Articles", link: "/" },
-  { title: "Topics", link: "/topics" },
   { title: "Users", link: "/users" },
 ];
 
@@ -108,7 +106,6 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-
           <UserInfo />
         </Toolbar>
       </Container>
