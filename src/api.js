@@ -50,3 +50,7 @@ export const patchArticle = (articleId, updatedArticle) => {
 export const postComment = (articleId, newComment) => {
   return ncNewsApi.post(`/articles/${articleId}/comments`, newComment);
 };
+
+export const deleteComment = (commentId) => {
+  return ncNewsApi.delete(`/comments/${commentId}`);
+};
