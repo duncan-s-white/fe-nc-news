@@ -13,6 +13,13 @@ img.user-profile {
 }
 
 footer a,
-footer a:visited {
+footer a:visited,
+.error-component a,
+.error-component a:visited {
   color: #212121;
+}
+
+footer a:hover,
+.error-component a:hover {
+  text-decoration: none;
 }

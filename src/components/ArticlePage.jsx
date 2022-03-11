@@ -9,12 +9,14 @@ import CommentsList from "./CommentsList";
 import Loading from "./Loading";
 import ShareButton from "./ShareButton";
 import { HashLink } from "react-router-hash-link";
+import Error from "./Error";
 
 const ArticlePage = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState([]);
   const [commentCount, setCommentCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,8 +27,15 @@ const ArticlePage = () => {
         setCommentCount(data.article.comment_count);
         setIsLoading(false);
       })
-      .catch(console.log);
+      .catch(({ response }) => {
+        setError(() => ({
+          title: `Error: ${response.status}`,
+          msg: response.data.msg,
+        }));
+      });
   }, []);
+
+  if (error) return <Error {...error} />;
 
   if (isLoading) return <Loading />;
 

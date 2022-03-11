@@ -11,6 +11,7 @@ import {
 import ArticleCard from "./ArticleCard";
 import TopicsButtons from "./TopicsButtons";
 import Loading from "./Loading";
+import Error from "./Error";
 
 const ArticleList = ({ topic, title }) => {
   const [articles, setArticles] = useState([]);
@@ -18,6 +19,8 @@ const ArticleList = ({ topic, title }) => {
   const [order, setOrder] = useState("desc");
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const sortByOptions = [
     ["Author", "author"],
     ["Title", "title"],
@@ -33,14 +36,18 @@ const ArticleList = ({ topic, title }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    Promise.all([
-      api.fetchArticles(topic, sortBy, order),
-      api.fetchTopics(),
-    ]).then(([articlesRes, topicRes]) => {
-      setArticles(articlesRes.data.articles);
-      setTopics(topicRes.data.topics);
-      setIsLoading(false);
-    });
+    Promise.all([api.fetchArticles(topic, sortBy, order), api.fetchTopics()])
+      .then(([articlesRes, topicRes]) => {
+        setArticles(articlesRes.data.articles);
+        setTopics(topicRes.data.topics);
+        setIsLoading(false);
+      })
+      .catch(({ response }) => {
+        setError(() => ({
+          title: `Error: ${response.status}`,
+          msg: response.data.msg,
+        }));
+      });
   }, [topic, sortBy, order]);
 
   const handleChangeSortBy = (event) => {
@@ -50,6 +57,8 @@ const ArticleList = ({ topic, title }) => {
   const handleChangeOrder = (event) => {
     setOrder(event.target.value);
   };
+
+  if (error) return <Error {...error} />;
 
   if (isLoading) return <Loading />;
 
