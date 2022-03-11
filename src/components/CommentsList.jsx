@@ -24,6 +24,7 @@ const CommentsList = ({ articleId, setCommentCount }) => {
 
   return (
     <Box
+      id="comments-list"
       variant="section"
       component="section"
       sx={{ py: 4, p: { lg: 8 }, lineHeight: { md: 1.8 } }}

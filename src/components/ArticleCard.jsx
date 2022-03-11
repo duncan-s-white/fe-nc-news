@@ -7,6 +7,7 @@ import { CardActionArea, Chip, Divider, Grid } from "@mui/material";
 import { ChatBubbleOutline, ThumbUpOffAlt } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import ShareButton from "./ShareButton";
+import { HashLink } from "react-router-hash-link";
 
 export default function ArticleCard({
   title,
@@ -59,11 +60,19 @@ export default function ArticleCard({
             clickable
           />
           <Grid item>
-            <IconButton aria-label="view comments">
+            <IconButton
+              aria-label={`view comments for article ${article_id}`}
+              component={HashLink}
+              to={`/article/${article_id}#comments-list`}
+            >
               <ChatBubbleOutline fontSize="small" />
             </IconButton>
             <Typography variant="caption">{comment_count}</Typography>
-            <IconButton aria-label="add to favorites">
+            <IconButton
+              aria-label={`vote on article ${article_id}`}
+              component={HashLink}
+              to={`/article/${article_id}#vote-article`}
+            >
               <ThumbUpOffAlt fontSize="small" />
             </IconButton>
             <Typography variant="caption">{votes}</Typography>

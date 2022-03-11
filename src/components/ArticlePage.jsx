@@ -8,6 +8,7 @@ import UserVote from "./UserVote";
 import CommentsList from "./CommentsList";
 import Loading from "./Loading";
 import ShareButton from "./ShareButton";
+import { HashLink } from "react-router-hash-link";
 
 const ArticlePage = () => {
   const { articleId } = useParams();
@@ -79,7 +80,11 @@ const ArticlePage = () => {
         <Grid item container direction="column" xs={3} alignItems="flex-end">
           <Grid item>
             <Typography variant="caption">{commentCount}</Typography>
-            <IconButton aria-label="view comments" color="default">
+            <IconButton
+              aria-label="view comments"
+              component={HashLink}
+              to="#comments-list"
+            >
               <ChatBubbleOutline />
             </IconButton>
           </Grid>
