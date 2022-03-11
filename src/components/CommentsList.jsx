@@ -36,7 +36,7 @@ const CommentsList = ({ articleId, setCommentCount }) => {
         setIsLoading(false);
       })
       .catch(console.log);
-  }, []);
+  }, [articleId]);
 
   if (isLoading) return <Loading />;
 
