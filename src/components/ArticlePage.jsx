@@ -33,7 +33,7 @@ const ArticlePage = () => {
           msg: response.data.msg,
         }));
       });
-  }, []);
+  }, [articleId]);
 
   if (error) return <Error {...error} />;
 
