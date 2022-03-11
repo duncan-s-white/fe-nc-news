@@ -1,9 +1,8 @@
 import "./App.css";
 import "@fontsource/roboto";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, Box } from "@mui/material";
 import theme from "./theme";
 import { Routes, Route } from "react-router-dom";
-import { Box } from "@mui/material";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import { ThemeProvider } from "@emotion/react";
 import HomePage from "./components/HomePage";
@@ -14,6 +13,7 @@ import UsersList from "./components/UsersList";
 import UserProfile from "./components/UserProfile";
 import { useState } from "react";
 import { UserContext } from "./contexts/UserContext";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -31,6 +31,7 @@ function App() {
           }}
         >
           <Routes>
+            <Route path="*" element={<ErrorPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/users" element={<UsersList />} />
             <Route path="/user/:username" element={<UserProfile />} />
