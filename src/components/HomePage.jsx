@@ -1,11 +1,9 @@
-import { Typography } from "@mui/material";
 import ArticleList from "./ArticleList";
 
 const HomePage = () => {
   return (
     <>
-      <Typography variant="h2"> Latest Articles </Typography>
-      <ArticleList />
+      <ArticleList title="Latest Articles" />
     </>
   );
 };

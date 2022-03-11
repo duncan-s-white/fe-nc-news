@@ -12,12 +12,19 @@ export const fetchComments = (articleId) => {
   return ncNewsApi.get(`/articles/${articleId}/comments`);
 };
 
-export const fetchArticles = (topic) => {
+export const fetchArticles = (
+  topic = null,
+  sort_by = "created_at",
+  order = "desc",
+  p = 1,
+  limit = 12
+) => {
   const fetchArticleParams = {
     params: {
-      limit: 0,
-      sort_by: "created_at",
-      order: "desc",
+      p,
+      limit,
+      sort_by,
+      order,
       topic,
     },
   };
