@@ -41,8 +41,9 @@ const AddComment = ({ articleId, setComments, setCommentCount }) => {
         setCommentCount((currCount) => currCount - 1);
         setSubmitSuccess(false);
         setComments((comments) => {
-          [...comments].shift();
-          return comments;
+          const newComments = [...comments];
+          newComments.shift();
+          return newComments;
         });
       });
   };
