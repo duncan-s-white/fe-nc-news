@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Box, Grid, Chip, IconButton, Typography } from "@mui/material";
-import { ChatBubbleOutline, Share } from "@mui/icons-material";
+import { ChatBubbleOutline } from "@mui/icons-material";
 import * as api from "../api";
 import * as format from "../utils/format";
 import UserVote from "./UserVote";
 import CommentsList from "./CommentsList";
 import Loading from "./Loading";
+import ShareButton from "./ShareButton";
 
 const ArticlePage = () => {
   const { articleId } = useParams();
@@ -84,7 +85,7 @@ const ArticlePage = () => {
           </Grid>
           <Grid item>
             <IconButton aria-label="share">
-              <Share />
+              <ShareButton title={article.title} path="" />
             </IconButton>
           </Grid>
         </Grid>

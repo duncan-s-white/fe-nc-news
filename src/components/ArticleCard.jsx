@@ -4,8 +4,9 @@ import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Chip, Divider, Grid } from "@mui/material";
-import { ChatBubbleOutline, ThumbUpOffAlt, Share } from "@mui/icons-material";
+import { ChatBubbleOutline, ThumbUpOffAlt } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import ShareButton from "./ShareButton";
 
 export default function ArticleCard({
   title,
@@ -67,7 +68,11 @@ export default function ArticleCard({
             </IconButton>
             <Typography variant="caption">{votes}</Typography>
             <IconButton aria-label="share">
-              <Share fontSize="small" />
+              <ShareButton
+                title={title}
+                path={`/article/${article_id}`}
+                size="small"
+              />
             </IconButton>
           </Grid>
         </Grid>
