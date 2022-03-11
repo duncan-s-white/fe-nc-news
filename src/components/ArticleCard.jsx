@@ -4,8 +4,10 @@ import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Chip, Divider, Grid } from "@mui/material";
-import { ChatBubbleOutline, ThumbUpOffAlt, Share } from "@mui/icons-material";
+import { ChatBubbleOutline, ThumbUpOffAlt } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import ShareButton from "./ShareButton";
+import { HashLink } from "react-router-hash-link";
 
 export default function ArticleCard({
   title,
@@ -30,9 +32,9 @@ export default function ArticleCard({
       >
         <Typography variant="address" component="address">
           By{" "}
-          <a rel="author" href={`/users/${author}`}>
+          <Link rel="author" to={`/user/${author}`}>
             {author}
-          </a>
+          </Link>
         </Typography>{" "}
         <time
           dateTime={format.cardDate(created_at)}
@@ -52,22 +54,34 @@ export default function ArticleCard({
           <Chip
             size="small"
             label={topic}
-            component="a"
-            href={`./topic/${topic}`}
+            component={Link}
+            to={`/topic/${topic}`}
             variant="outlined"
             clickable
           />
           <Grid item>
-            <IconButton aria-label="view comments">
+            <IconButton
+              aria-label={`view comments for article ${article_id}`}
+              component={HashLink}
+              to={`/article/${article_id}#comments-list`}
+            >
               <ChatBubbleOutline fontSize="small" />
             </IconButton>
             <Typography variant="caption">{comment_count}</Typography>
-            <IconButton aria-label="add to favorites">
+            <IconButton
+              aria-label={`vote on article ${article_id}`}
+              component={HashLink}
+              to={`/article/${article_id}#vote-article`}
+            >
               <ThumbUpOffAlt fontSize="small" />
             </IconButton>
             <Typography variant="caption">{votes}</Typography>
             <IconButton aria-label="share">
-              <Share fontSize="small" />
+              <ShareButton
+                title={title}
+                path={`/article/${article_id}`}
+                size="small"
+              />
             </IconButton>
           </Grid>
         </Grid>

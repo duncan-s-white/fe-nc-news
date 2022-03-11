@@ -32,14 +32,14 @@ const UserVote = ({ votes, id }) => {
 
   return (
     <>
-      <Typography variant="span" component="span">
+      <Typography variant="span" component="span" id={`vote-article`}>
         <IconButton aria-label="vote up" onClick={incrementVotes}>
-          <ThumbUpOffAlt />
-        </IconButton>
-        <IconButton aria-label="vote down" onClick={decrementVotes}>
-          <ThumbDownOffAlt />
+          <ThumbUpOffAlt color={voted === 1 ? "primary" : "default"} />
         </IconButton>
         <Typography variant="caption">{votes + voted}</Typography>
+        <IconButton aria-label="vote down" onClick={decrementVotes}>
+          <ThumbDownOffAlt color={voted === -1 ? "primary" : "default"} />
+        </IconButton>
       </Typography>
       {errorMessage ? (
         <FormHelperText error={true}>{errorMessage}</FormHelperText>

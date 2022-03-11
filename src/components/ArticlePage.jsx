@@ -1,24 +1,31 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Box, Grid, Chip, IconButton, Typography } from "@mui/material";
-import { ChatBubbleOutline, Share } from "@mui/icons-material";
+import { ChatBubbleOutline } from "@mui/icons-material";
 import * as api from "../api";
 import * as format from "../utils/format";
 import UserVote from "./UserVote";
 import CommentsList from "./CommentsList";
 import Loading from "./Loading";
+import ShareButton from "./ShareButton";
+import { HashLink } from "react-router-hash-link";
 
 const ArticlePage = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState([]);
+  const [commentCount, setCommentCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticle(articleId).then(({ data }) => {
-      setArticle(data.article);
-      setIsLoading(false);
-    });
+    api
+      .fetchArticle(articleId)
+      .then(({ data }) => {
+        setArticle(data.article);
+        setCommentCount(data.article.comment_count);
+        setIsLoading(false);
+      })
+      .catch(console.log);
   }, []);
 
   if (isLoading) return <Loading />;
@@ -47,9 +54,9 @@ const ArticlePage = () => {
         <Grid item xs={9}>
           <Typography variant="address" component="address" className="author">
             By{" "}
-            <a rel="author" href={`/users/${article.author}`}>
+            <Link rel="author" to={`/user/${article.author}`}>
               {article.author}
-            </a>
+            </Link>
           </Typography>
           <Typography
             variant="time"
@@ -64,22 +71,26 @@ const ArticlePage = () => {
             sx={{ my: 0.5 }}
             size="small"
             label={article.topic}
-            component="a"
-            href={`/topic/${article.topic}`}
+            component={Link}
+            to={`/topic/${article.topic}`}
             variant="outlined"
             clickable
           />
         </Grid>
         <Grid item container direction="column" xs={3} alignItems="flex-end">
           <Grid item>
-            <Typography variant="caption">{article.comment_count}</Typography>
-            <IconButton aria-label="view comments" disabled color="default">
+            <Typography variant="caption">{commentCount}</Typography>
+            <IconButton
+              aria-label="view comments"
+              component={HashLink}
+              to="#comments-list"
+            >
               <ChatBubbleOutline />
             </IconButton>
           </Grid>
           <Grid item>
             <IconButton aria-label="share">
-              <Share />
+              <ShareButton title={article.title} path="" />
             </IconButton>
           </Grid>
         </Grid>
@@ -95,7 +106,10 @@ const ArticlePage = () => {
 
       <UserVote votes={article.votes} id={article.article_id} />
 
-      <CommentsList articleId={article.article_id} />
+      <CommentsList
+        articleId={article.article_id}
+        setCommentCount={setCommentCount}
+      />
     </Box>
   );
 };

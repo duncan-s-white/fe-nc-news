@@ -5,6 +5,7 @@ import ArticleList from "./ArticleList";
 
 const TopicPage = () => {
   const { slug } = useParams();
+
   return (
     <>
       <Typography variant="h2">{slugTitle(slug)}</Typography>
