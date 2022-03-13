@@ -11,37 +11,32 @@ import ArticlePage from "./components/ArticlePage";
 import Footer from "./components/Footer";
 import UsersList from "./components/UsersList";
 import UserProfile from "./components/UserProfile";
-import { useState } from "react";
-import { UserContext } from "./contexts/UserContext";
 import ErrorPage from "./components/ErrorPage";
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState(null);
   return (
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <ResponsiveAppBar />
-        <Box
-          component="main"
-          sx={{
-            p: 2,
-            maxWidth: [480, 720, 1080, 1440],
-            margin: "0 auto",
-          }}
-        >
-          <Routes>
-            <Route path="*" element={<ErrorPage />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="/users" element={<UsersList />} />
-            <Route path="/user/:username" element={<UserProfile />} />
-            <Route path="/topic/:slug" element={<TopicPage />} />
-            <Route path="/article/:articleId" element={<ArticlePage />} />
-          </Routes>
-        </Box>
-        <Footer />
-      </ThemeProvider>
-    </UserContext.Provider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ResponsiveAppBar />
+      <Box
+        component="main"
+        sx={{
+          p: 2,
+          maxWidth: [480, 720, 1080, 1440],
+          margin: "0 auto",
+        }}
+      >
+        <Routes>
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/users" element={<UsersList />} />
+          <Route path="/user/:username" element={<UserProfile />} />
+          <Route path="/topic/:slug" element={<TopicPage />} />
+          <Route path="/article/:articleId" element={<ArticlePage />} />
+        </Routes>
+      </Box>
+      <Footer />
+    </ThemeProvider>
   );
 }
 
