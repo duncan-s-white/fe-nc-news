@@ -19,16 +19,15 @@ export const fetchArticles = (
   p = 1,
   limit = 12
 ) => {
-  const fetchArticleParams = {
-    params: {
-      p,
-      limit,
-      sort_by,
-      order,
-      topic,
-    },
+  const params = {
+    p,
+    limit,
+    sort_by,
+    order,
+    topic,
   };
-  return ncNewsApi.get("/articles", fetchArticleParams);
+  if (params.topic === "all") delete params.topic;
+  return ncNewsApi.get("/articles", { params });
 };
 
 export const fetchTopics = () => {

@@ -5,13 +5,12 @@ import theme from "./theme";
 import { Routes, Route } from "react-router-dom";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import { ThemeProvider } from "@emotion/react";
-import HomePage from "./components/HomePage";
-import TopicPage from "./components/TopicPage";
 import ArticlePage from "./components/ArticlePage";
 import Footer from "./components/Footer";
 import UsersList from "./components/UsersList";
 import UserProfile from "./components/UserProfile";
 import ErrorPage from "./components/ErrorPage";
+import ArticleList from "./components/ArticleList";
 
 function App() {
   return (
@@ -28,10 +27,10 @@ function App() {
       >
         <Routes>
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<ArticleList />} />
           <Route path="/users" element={<UsersList />} />
           <Route path="/user/:username" element={<UserProfile />} />
-          <Route path="/topic/:slug" element={<TopicPage />} />
+          <Route path="/topic/:topic" element={<ArticleList />} />
           <Route path="/article/:articleId" element={<ArticlePage />} />
         </Routes>
       </Box>
