@@ -3,6 +3,11 @@ export const cardTitle = (title, maxLength = 60) => {
   return title.substring(0, maxLength - 3) + "...";
 };
 
+export const cardDate = (rawDate) => {
+  if (rawDate === "Just now") return rawDate;
+  return new Date(rawDate).toDateString();
+};
+
 export const topicTitle = (topic, sortBy, order) => {
   let title = "Articles";
   if (topic !== "all") {
@@ -39,9 +44,4 @@ export const sortByText = (sortBy) => {
         ["Z-A", "desc"],
       ];
   }
-};
-
-export const cardDate = (rawDate) => {
-  if (rawDate === "Just now") return rawDate;
-  return new Date(rawDate).toDateString();
 };

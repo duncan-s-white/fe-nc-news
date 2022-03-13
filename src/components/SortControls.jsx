@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { sortByText } from "../utils/format";
 
 const SortControls = ({ order, sortBy, setSortBy, setOrder, topic }) => {
-  const defaultSortByOptions = [
+  const sortByOptions = [
     ["Date", "created_at"],
     ["Votes", "votes"],
     ["Comments", "comment_count"],
@@ -16,26 +16,10 @@ const SortControls = ({ order, sortBy, setSortBy, setOrder, topic }) => {
     ["Oldest", "asc"],
   ];
   const [orderOptions, setOrderOptions] = useState(defaultOrderOptions);
-  const [sortByOptions, setSortByOptions] = useState(defaultSortByOptions);
 
   useEffect(() => {
     setOrderOptions(sortByText(sortBy));
   }, [sortBy]);
-
-  useEffect(() => {
-    if (topic === "all") {
-      setSortByOptions(defaultSortByOptions);
-    } else {
-      setSortByOptions((options) =>
-        options.filter((option) => option[1] !== "topic")
-      );
-    }
-  }, [topic]);
-
-  const handleChangeSortBy = (event) => {
-    const sortBy = event.target.value;
-    setSortBy(sortBy);
-  };
 
   return (
     <>
@@ -43,7 +27,9 @@ const SortControls = ({ order, sortBy, setSortBy, setOrder, topic }) => {
         <InputLabel>Sort By</InputLabel>
         <Select
           value={sortBy}
-          onChange={handleChangeSortBy}
+          onChange={(event) => {
+            setSortBy(event.target.value);
+          }}
           autoWidth
           label="Sort By"
         >
