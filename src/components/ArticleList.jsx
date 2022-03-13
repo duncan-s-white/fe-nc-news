@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import * as api from "../api";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Pagination, Typography } from "@mui/material";
 import ArticleCard from "./ArticleCard";
 import TopicsButtons from "./TopicsButtons";
 import Loading from "./Loading";
 import Error from "./Error";
 import SortControls from "./SortControls";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { topicTitle } from "../utils/format";
 
 const ArticleList = () => {
   const { topic = "all" } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [articles, setArticles] = useState([]);
   const [title, setTitle] = useState("Latest Articles");
   const [sortBy, setSortBy] = useState("created_at");
@@ -18,11 +19,17 @@ const ArticleList = () => {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const page = Number(searchParams.get("page")) || 1;
+  const [noOfPages, setNoOfPages] = useState(1);
 
   useEffect(() => {
     setIsLoading(true);
-    Promise.all([api.fetchArticles(topic, sortBy, order), api.fetchTopics()])
+    Promise.all([
+      api.fetchArticles(topic, sortBy, order, page),
+      api.fetchTopics(),
+    ])
       .then(([articlesRes, topicRes]) => {
+        setNoOfPages(Math.ceil(articlesRes.data.total_count / 10));
         setArticles(articlesRes.data.articles);
         setTopics(topicRes.data.topics);
         setTitle(topicTitle(topic, sortBy, order));
@@ -34,7 +41,11 @@ const ArticleList = () => {
           msg: response.data.msg,
         }));
       });
-  }, [topic, sortBy, order]);
+  }, [topic, sortBy, order, page]);
+
+  const handleChangePage = (event, value) => {
+    setSearchParams({ page: value });
+  };
 
   if (error) return <Error {...error} />;
 
@@ -67,6 +78,14 @@ const ArticleList = () => {
             </Grid>
           );
         })}
+        <Grid item container xs={12} justifyContent="center">
+          <Pagination
+            color="primary"
+            count={noOfPages}
+            page={page}
+            onChange={handleChangePage}
+          />
+        </Grid>
       </Grid>
     </>
   );

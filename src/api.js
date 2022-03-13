@@ -17,7 +17,7 @@ export const fetchArticles = (
   sort_by = "created_at",
   order = "desc",
   p = 1,
-  limit = 12
+  limit = 10
 ) => {
   const params = {
     p,
