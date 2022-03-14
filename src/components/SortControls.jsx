@@ -2,7 +2,7 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useState, useEffect } from "react";
 import { sortByText } from "../utils/format";
 
-const SortControls = ({ order, sortBy, setSortBy, setOrder, topic }) => {
+const SortControls = ({ order, sortBy, setSortBy, setOrder }) => {
   const sortByOptions = [
     ["Date", "created_at"],
     ["Votes", "votes"],
