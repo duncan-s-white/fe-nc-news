@@ -11,6 +11,7 @@ import UsersList from "./components/UsersList";
 import UserProfile from "./components/UserProfile";
 import ErrorPage from "./components/ErrorPage";
 import ArticleList from "./components/ArticleList";
+import UserSettings from "./components/UserSettings";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<ArticleList />} />
           <Route path="/users" element={<UsersList />} />
           <Route path="/user/:username" element={<UserProfile />} />
+          <Route path="/user/:username/settings" element={<UserSettings />} />
           <Route path="/topic/:topic" element={<ArticleList />} />
           <Route path="/article/:articleId" element={<ArticlePage />} />
         </Routes>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import * as api from "../api";
 import { Grid, Pagination, Typography } from "@mui/material";
 import ArticleCard from "./ArticleCard";
@@ -8,8 +8,10 @@ import Error from "./Error";
 import SortControls from "./SortControls";
 import { useParams, useSearchParams } from "react-router-dom";
 import { topicTitle } from "../utils/format";
+import { UserContext } from "../contexts/UserContext";
 
 const ArticleList = () => {
+  const { loggedInUser } = useContext(UserContext);
   const { topic = "all" } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const [articles, setArticles] = useState([]);
@@ -21,15 +23,19 @@ const ArticleList = () => {
   const [error, setError] = useState(null);
   const page = Number(searchParams.get("page")) || 1;
   const [noOfPages, setNoOfPages] = useState(1);
+  const artsPerPage =
+    loggedInUser && loggedInUser.articlesPerPage
+      ? loggedInUser.articlesPerPage
+      : 10;
 
   useEffect(() => {
     setIsLoading(true);
     Promise.all([
-      api.fetchArticles(topic, sortBy, order, page),
+      api.fetchArticles(topic, sortBy, order, page, artsPerPage),
       api.fetchTopics(),
     ])
       .then(([articlesRes, topicRes]) => {
-        setNoOfPages(Math.ceil(articlesRes.data.total_count / 10));
+        setNoOfPages(Math.ceil(articlesRes.data.total_count / artsPerPage));
         setArticles(articlesRes.data.articles);
         setTopics(topicRes.data.topics);
         setTitle(topicTitle(topic, sortBy, order));
@@ -41,7 +47,7 @@ const ArticleList = () => {
           msg: response.data.msg,
         }));
       });
-  }, [topic, sortBy, order, page]);
+  }, [topic, sortBy, order, page, artsPerPage]);
 
   const handleChangePage = (event, value) => {
     setSearchParams({ page: value });
