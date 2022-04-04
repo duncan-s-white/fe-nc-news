@@ -1,17 +1,15 @@
-import * as api from "../api";
 import { IconButton, Typography, FormHelperText } from "@mui/material";
 import { ThumbUpOffAlt, ThumbDownOffAlt } from "@mui/icons-material";
 import { useState } from "react";
 
-const UserVote = ({ votes, id }) => {
+const UserVote = ({ votes, id, updateMethod }) => {
   const [voted, setVoted] = useState(0);
   const [errorMessage, setErrorMessage] = useState(false);
   const msg = "You vote could not be placed";
 
   const updateVotes = (value) => {
     if (voted === value) return;
-    api
-      .patchArticle(id, { inc_votes: value })
+    updateMethod(id, { inc_votes: value })
       .then(() => {
         setErrorMessage(false);
       })

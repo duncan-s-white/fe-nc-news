@@ -113,7 +113,11 @@ const ArticlePage = () => {
         {article.body}
       </Typography>
 
-      <UserVote votes={article.votes} id={article.article_id} />
+      <UserVote
+        votes={article.votes}
+        updateMethod={api.patchArticle}
+        id={article.article_id}
+      />
 
       <CommentsList
         articleId={article.article_id}

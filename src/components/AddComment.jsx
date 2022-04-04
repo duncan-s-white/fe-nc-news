@@ -39,7 +39,12 @@ const AddComment = ({
     setComment("");
     setCommentDeleted(null);
     setComments((comments) => [
-      { body: comment, created_at: "Just now", author: loggedInUser.username },
+      {
+        body: comment,
+        created_at: "Just now",
+        author: loggedInUser.username,
+        votes: 0,
+      },
       ...comments,
     ]);
     setCommentCount((currCount) => currCount + 1);

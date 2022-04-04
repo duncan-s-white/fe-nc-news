@@ -40,6 +40,7 @@ const ArticleList = () => {
         setTopics(topicRes.data.topics);
         setTitle(topicTitle(topic, sortBy, order));
         setIsLoading(false);
+        setError(null);
       })
       .catch(({ response }) => {
         setError(() => ({

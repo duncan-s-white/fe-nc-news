@@ -46,6 +46,10 @@ export const patchArticle = (articleId, updatedArticle) => {
   return ncNewsApi.patch(`/articles/${articleId}`, updatedArticle);
 };
 
+export const patchComment = (commentId, updatedComment) => {
+  return ncNewsApi.patch(`/comments/${commentId}`, updatedComment);
+};
+
 export const postComment = (articleId, newComment) => {
   return ncNewsApi.post(`/articles/${articleId}/comments`, newComment);
 };
