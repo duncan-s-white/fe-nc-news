@@ -26,7 +26,7 @@ The app design is mobile first, so views best on mobile devices, although it sho
 
 `npm start`
 
-You can then view the project in a browser at localhost:3000
+You can then view the project in a browser at http://localhost:3000/
 
 ## Minimum tested versions:
 
