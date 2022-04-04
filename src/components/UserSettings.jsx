@@ -26,10 +26,14 @@ const UserSettings = () => {
 
   const handleSetArticles = (event) => {
     setArticlesPerPage(event.target.value);
-    setLoggedInUser((current) => ({
-      ...current,
-      articlesPerPage: event.target.value,
-    }));
+    setLoggedInUser((current) => {
+      const newUser = {
+        ...current,
+        articlesPerPage: event.target.value,
+      };
+      localStorage.setItem("user", JSON.stringify(newUser));
+      return newUser;
+    });
   };
 
   if (!loggedInUser) {
