@@ -41,7 +41,7 @@ const UserInfo = () => {
   ];
 
   return (
-    <Box sx={{ flexGrow: 0 }}>
+    <Box sx={{ flexGrow: 0, margin: "14.5px 12px 14px 12px" }}>
       <Tooltip title="Open User Options">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           <Avatar alt="Remy Sharp" src={loggedInUser.avatar_url} />
