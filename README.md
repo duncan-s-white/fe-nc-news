@@ -12,7 +12,7 @@ It is a React app using the Material UI Library.
 
 The app design is mobile first, so views best on mobile devices, although it should work on almost any size of device.
 
-## Setup
+## Setup Locally
 
 ### Clone:
 
@@ -21,6 +21,12 @@ The app design is mobile first, so views best on mobile devices, although it sho
 ### Install dependencies:
 
 `npm install`
+
+### Start the development server:
+
+`npm start`
+
+You can then view the project running on localhost:3000
 
 ## Minimum tested versions:
 
