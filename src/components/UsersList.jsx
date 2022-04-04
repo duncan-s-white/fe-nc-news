@@ -16,13 +16,10 @@ const UsersList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    api
-      .fetchUsers()
-      .then(({ data }) => {
-        setUsers(data.users);
-        setIsLoading(false);
-      })
-      .catch(console.log);
+    api.fetchUsers().then(({ data }) => {
+      setUsers(data.users);
+      setIsLoading(false);
+    });
   }, []);
 
   if (isLoading) return <Loading />;

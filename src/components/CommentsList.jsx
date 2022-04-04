@@ -29,13 +29,10 @@ const CommentsList = ({ articleId, setCommentCount }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    api
-      .fetchComments(articleId)
-      .then(({ data }) => {
-        setComments(data.comments);
-        setIsLoading(false);
-      })
-      .catch(console.log);
+    api.fetchComments(articleId).then(({ data }) => {
+      setComments(data.comments);
+      setIsLoading(false);
+    });
   }, [articleId]);
 
   if (isLoading) return <Loading />;

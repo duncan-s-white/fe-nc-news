@@ -13,9 +13,7 @@ const ShareButton = ({ title, path, small }) => {
   const handleClickShare = (event) => {
     if (navigator.share) {
       navigator.share({ title, url });
-      //can have .then and .catch to handle promise response
     } else {
-      //handle browsers without the share api
       setAnchorEl(event.currentTarget);
     }
   };

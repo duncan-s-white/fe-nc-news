@@ -34,13 +34,10 @@ const UserProfile = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    api
-      .fetchUser(username)
-      .then(({ data }) => {
-        setUser(data.user);
-        setIsLoading(false);
-      })
-      .catch(console.log);
+    api.fetchUser(username).then(({ data }) => {
+      setUser(data.user);
+      setIsLoading(false);
+    });
   }, [username]);
 
   if (isLoading) return <Loading />;
