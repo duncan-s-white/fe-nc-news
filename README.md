@@ -6,7 +6,7 @@ Try out the hosted app here: [https://dw-nc-news.netlify.app/](https://dw-nc-new
 
 This app was made during a skills bootcamp run by [Northcoders](https://northcoders.com/)
 
-The app is the front end portion to work with an express API app, that I made for the back end: https://github.com/duncan-s-white/news-api
+This app is the front end which connects with an express API, that I made for the back end: https://github.com/duncan-s-white/news-api
 
 It is a React app using the Material UI Library.
 
@@ -26,7 +26,7 @@ The app design is mobile first, so views best on mobile devices, although it sho
 
 `npm start`
 
-You can then view the project running on localhost:3000
+You can then view the project in a browser at localhost:3000
 
 ## Minimum tested versions:
 
