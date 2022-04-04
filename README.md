@@ -1,6 +1,6 @@
 # NC News Front End
 
-[Try it out](https://dw-nc-news.netlify.app/)
+Try out the hosted app here: [https://dw-nc-news.netlify.app/](https://dw-nc-news.netlify.app/)
 
 ## What is it?
 
