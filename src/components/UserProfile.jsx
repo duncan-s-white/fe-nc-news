@@ -16,6 +16,7 @@ const UserProfile = () => {
 
   const logIn = (user) => {
     setLoggedInUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
     if (user === null) {
       setLogInMessage(
         <Alert severity="warning" sx={{ mb: 2 }}>
