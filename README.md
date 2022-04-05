@@ -10,7 +10,7 @@ This app is the front end which connects with an express API, that I made for th
 
 It is a React app using the Material UI Library.
 
-The app design is mobile first, although it can be used on desktop, and most other devices.
+The app design is mobile first, although it can be used on a desktop computer / monitor, and most other devices.
 
 This project uses 'Continuous Deployment' functionality to build and deploy to Netlify whenever code is updated in the main branch. 
 
