@@ -33,7 +33,7 @@ const AddComment = ({
     event.preventDefault();
     if (comment.length < 5) {
       setError(true);
-      setHelperText("You comment must be at least 5 characters long!");
+      setHelperText("Your comment must be at least 5 characters long!");
       return;
     }
     setComment("");

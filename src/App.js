@@ -9,7 +9,7 @@ import ArticlePage from "./components/ArticlePage";
 import Footer from "./components/Footer";
 import UsersList from "./components/UsersList";
 import UserProfile from "./components/UserProfile";
-import ErrorPage from "./components/ErrorPage";
+import Error from "./components/Error";
 import ArticleList from "./components/ArticleList";
 import UserSettings from "./components/UserSettings";
 
@@ -27,7 +27,7 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<Error />} />
           <Route path="/" element={<ArticleList />} />
           <Route path="/users" element={<UsersList />} />
           <Route path="/user/:username" element={<UserProfile />} />

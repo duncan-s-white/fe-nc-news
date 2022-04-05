@@ -1,7 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const Error = ({ title, msg }) => {
+const Error = ({
+  title = "Page not found",
+  msg = "It looks like you are lost!",
+}) => {
   return (
     <>
       <Typography variant="h2" component="h2">
