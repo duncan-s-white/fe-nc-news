@@ -12,6 +12,8 @@ It is a React app using the Material UI Library.
 
 The app design is mobile first, so views best on mobile devices, although it should work on almost any size of device.
 
+This project uses 'Continuous Deployment' functionality to build and deploy to Netlify whenever code is updated in the main branch. 
+
 ## Setup locally
 
 ### Clone:
