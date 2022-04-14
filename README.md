@@ -12,7 +12,7 @@ It is a React app using the Material UI Library.
 
 The app design is mobile first, although it can be used on a desktop computer / monitor, and most other devices.
 
-This project uses 'Continuous Deployment' functionality to build and deploy to Netlify whenever code is updated in the main branch. 
+This project uses 'Continuous Deployment' functionality to build and deploy to Netlify whenever code is updated on the main branch of this repository. 
 
 ## Setup locally
 
